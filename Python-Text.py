@@ -53,5 +53,5 @@ filemenu.add_command(label="Exit",  command=app.quit)
 
 menubar.add_cascade(label="Options", menu=filemenu)
 
-app.config(menu=menubar)
-app.mainloop()
+text_editor.config(menu=menubar)
+text_editor.mainloop()
