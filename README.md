@@ -7,4 +7,4 @@ Python 3 and
 Tkinter
 
 # Warning
-This is a test project
+I created this project for study
