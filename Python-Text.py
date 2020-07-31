@@ -1,8 +1,13 @@
 from tkinter import *
+from tkinter import filedialog
 from tkinter.filedialog import *
 import tkinter as tk
+import os
+import sys
 
 filename = None
+
+#ALL FUNCTIONS
 
 def newFile():
     global filename
@@ -16,9 +21,9 @@ def saveFile():
     f = open(filename, 'Untitled')
     f.write(t)
     f.close()
-        
+                          
 def saveAs():
-    f = asksaveasfile(mode='w')
+    f = asksaveasfilename(defaultextension=".txt", filetypes=(("txt file", "*.txt"),("All Files", "*.*") ))
     t = text.get(0.0, END)
     try:
         f.write(t.strip())
@@ -31,19 +36,25 @@ def openFile():
     text.delete(0.0, END)
     text.insert(0.0, t)
 
+#ROOT TO MAKE A MENU BAR  
+
 root = Tk()
 root.title("Python-Text")
 root.minsize(width=400, height=400)
 root.maxsize(width=400, height=400)
 
+#TEXT SETTINGS
+
 text = Text(root, width=400, height=400)
 text.pack()
+
+#MENUBAR FUNCTIONS IN PROGRAM
 
 menubar = tk.Menu(root)
 filemenu = tk.Menu(menubar)
 filemenu.add_command(label="New File",  command=newFile)
 filemenu.add_command(label="Open",  command=openFile)
-filemenu.add_command(label="Save as",  command=saveAs)
+filemenu.add_command(label="Save",  command=saveAs)
 filemenu.add_separator()
 filemenu.add_command(label="Exit",  command=root.quit)
 
