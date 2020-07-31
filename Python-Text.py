@@ -23,7 +23,7 @@ def saveFile():
     f.close()
                           
 def saveAs():
-    f = asksaveasfilename(defaultextension=".txt", filetypes=(("txt file", "*.txt"),("All Files", "*.*") )), (mode='w')
+    f = asksaveasfile(mode='w')                   
     t = text.get(0.0, END)
     try:
         f.write(t.strip())
