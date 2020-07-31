@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.filedialog import *
 import tkinter as tk
-from tkinter import filedialog
 
 filename = None
 
@@ -10,28 +9,28 @@ def newFile():
     filename = "Untitled"
     f = asksaveasfile(mode='x')
     text.delete(0.0, END)
-    
+        
 def saveFile():
     global filename
     t = text.get(0.0, END)
     f = open(filename, 'Untitled')
     f.write(t)
     f.close()
-    
+        
 def saveAs():
     f = asksaveasfile(mode='w')
     t = text.get(0.0, END)
     try:
         f.write(t.strip())
     except:
-        showerror(title="Error!", message="não é possivel salvar arquivo")
-        
+        showerror(title="Error!", message="not is possible save")
+            
 def openFile():
     f = askopenfile(mode='r')
     t = f.read()
     text.delete(0.0, END)
-    text.insert(0.0, t) 
-    
+    text.insert(0.0, t)
+
 root = Tk()
 root.title("Python-Text")
 root.minsize(width=400, height=400)
@@ -40,18 +39,15 @@ root.maxsize(width=400, height=400)
 text = Text(root, width=400, height=400)
 text.pack()
 
-app = tk.Tk()
-app.geometry('300x200')
-app.title("Menu")
-menubar = tk.Menu(app)
+menubar = tk.Menu(root)
 filemenu = tk.Menu(menubar)
 filemenu.add_command(label="New File",  command=newFile)
 filemenu.add_command(label="Open",  command=openFile)
 filemenu.add_command(label="Save as",  command=saveAs)
 filemenu.add_separator()
-filemenu.add_command(label="Exit",  command=app.quit)
+filemenu.add_command(label="Exit",  command=root.quit)
 
 menubar.add_cascade(label="Options", menu=filemenu)
 
-app.config(menu=menubar)
-app.mainloop()
+root.config(menu=menubar)
+root.mainloop()
